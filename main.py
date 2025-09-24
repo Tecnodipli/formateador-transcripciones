@@ -356,15 +356,16 @@ app = FastAPI(title="Formateador de Transcripciones")
 ALLOWED_ORIGINS = [
     "https://www.dipli.ai",
     "https://dipli.ai",
-    "https://isagarcivill09.wixsite.com",
     "https://isagarcivill09.wixsite.com/turop",
     "https://isagarcivill09.wixsite.com/turop/tienda",
-    "https://isagarcivill09-wixsite-com.filesusr.com"
+    "https://isagarcivill09-wixsite-com.filesusr.com",
+    "https://www.dipli.ai/preparaci%C3%B3n",
+    "https://www-dipli-ai.filesusr.com"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
+    allow_origins=ALLOWED_ORIGINS,   # ✅ ahora sí aplica tu lista
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -479,4 +480,5 @@ async def descargar_archivo(token: str):
             "Content-Length": str(len(zip_buffer.getvalue()))
         }
     )
+
     return response
